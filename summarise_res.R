@@ -38,5 +38,30 @@ colnames(sd_df_n300) <- c("m10s10","m10s30","m10s50",
 
 row.names(sd_df_n300) <- NULL
 
-sd_df_n300[1]
+mu_df_n300[6]
 
+sd_df_n300[6]
+
+# Compute for n = 1000
+
+# mu
+mu_est_n1000 <- lapply(1:length(res1000), function(i){get_mu(res1000, i)})
+mu_df_n1000 <- as.data.frame(do.call(rbind, mu_est_n1000))[-10,]
+
+colnames(mu_df_n1000) <- c("m10s10","m10s30","m10s50", 
+                          "m30s10", "m30s30", "m30s50")
+row.names(mu_df_n1000) <- NULL
+
+# sd 
+sd_est_n1000 <- lapply(1:length(res1000), function(i){get_sd(res1000, i)})
+sd_df_n1000 <- as.data.frame(do.call(rbind, sd_est_n1000))[-10,]
+
+
+colnames(sd_df_n1000) <- c("m10s10","m10s30","m10s50", 
+                          "m30s10", "m30s30", "m30s50")
+
+row.names(sd_df_n1000) <- NULL
+
+mu_df_n1000[6]
+
+sd_df_n1000[6]
