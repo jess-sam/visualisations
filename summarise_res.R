@@ -38,7 +38,7 @@ colnames(sd_df_n300) <- c("m10s10","m10s30","m10s50",
 
 row.names(sd_df_n300) <- NULL
 
-mu_df_n300[6]
+mu_df_n300[11,]
 
 sd_df_n300[6]
 
@@ -62,6 +62,8 @@ colnames(sd_df_n1000) <- c("m10s10","m10s30","m10s50",
 
 row.names(sd_df_n1000) <- NULL
 
-mu_df_n1000[6]
+mu_df_n1000[11,]
 
 sd_df_n1000[6]
+
+save(mu_df_n300, mu_df_n1000, sd_df_n300, sd_df_n1000, file = "res_sum.Rdata")
