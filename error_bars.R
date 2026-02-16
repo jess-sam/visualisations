@@ -9,17 +9,6 @@ mu <- 0
 
 true_params <- c(mu, alpha_vec, beta_vec)
 
-df_summary <- mtcars %>% 
-  group_by(cyl) %>% 
-  summarize(
-    mean_mpg = mean(mpg),
-    sd_mpg = sd(mpg),
-    ymin = mean_mpg - sd_mpg, # Lower limit
-    ymax = mean_mpg + sd_mpg  # Upper limit
-  )
-
-mu_df_n1000[1,]
-
 make_df <- function(param, scen){
   
   if(param == 1){
@@ -56,11 +45,13 @@ make_df <- function(param, scen){
     dash_line_val <- 1/3
   }
   
-  df <- data.frame(n_rows = c(300, 1000),
+  df <- data.frame(n_rows = c(300, 1000, 3000),
              mean_val = c(mu_df_n300[param, scen], 
-                          mu_df_n1000[param, scen]),
+                          mu_df_n1000[param, scen],
+                          mu_df_n3000[param, scen]),
              sd_val = c(sd_df_n300[param, scen],
-                        sd_df_n1000[param, scen]))
+                        sd_df_n1000[param, scen],
+                        sd_df_n3000[param, scen]))
   df$ymin <- df$mean_val - df$sd_val
   df$ymax <- df$mean_val + df$sd_val
   
